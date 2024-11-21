@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Amantes de Jiu-Jitsu</title>
+    <link rel="stylesheet" href="estilo.css">
+</head>
+
+<body>
+
+    <h2>Mini lojinha de Jiu-Jitsu</h2>
+    <h3>Técnicas e golpes</h3>
+    <button onclick="adicionarTecnica()">Adicionar Técnica</button>
+    <button onclick="mostrarTecnicas()">Mostrar Técnicas</button>
+    <button onclick="limparTecnicas()">Limpar Técnicas</button>
+    <div id="tecnicasExibidas"></div>
+
+    <h3>Maiores títulos do esporte</h3>
+    <button onclick="adicionarAtleta()">Adicionar Atleta</button>
+    <button onclick="mostrarAtletas()">Mostrar Atletas</button>
+    <button onclick="limparAtletas()">Limpar Atletas</button>
+    <div id="atletasExibidos"></div>
+
+    <h3>Produtos</h3>
+    <div id="produtos"></div>
+
+    <h3>Carrinho</h3>
+    <div id="carrinho"></div>
+
+    <script>
+        // Solicitar o nome do usuário
+        let nomeUsuario = prompt("Digite seu nome para entrar:");
+        while (!nomeUsuario)
+        alert(`Bem-vindo, ${nomeUsuario}!`);
+
+        let tecnicas = [];
+        let atletas = [];
+        let carrinho = [];
+
+        let produtos = [
+            { nome: "Kimonos", preco: 456.98 },
+            { nome: "Rashguard", preco: 145.67 },
+            { nome: "Protetor Bucal", preco: 56.43 },
+            { nome: "Esparadrapo Branco (tradicional)", preco: 10.21 },
+            { nome: "Finger Tape Preta", preco: 16.57 },
+            { nome: "Whey", preco: 167.48 },
+            { nome: "Creatina", preco: 129.54 },
+        ];
+
+        // Função para adicionar uma técnica
+        function adicionarTecnica() {
+            let tecnica = prompt("Digite o nome da técnica:");
+            if (tecnica) tecnicas.push(tecnica);
+        }
+
+        // Função para mostrar as técnicas na página
+        function mostrarTecnicas() {
+            const tecnicasDiv = document.getElementById("tecnicasExibidas");
+            if (tecnicas.length > 0) {
+                tecnicasDiv.innerHTML = "<strong>Técnicas:</strong><br>" + tecnicas.join(", ");
+            } else {
+                tecnicasDiv.innerHTML = "Nenhuma técnica cadastrada.";
+            }
+        }
+
+        // Função para limpar as técnicas
+        function limparTecnicas() {
+            tecnicas = [];
+            document.getElementById("tecnicasExibidas").innerHTML = "Técnicas limpas.";
+        }
+
+        // Função para adicionar um atleta
+        function adicionarAtleta() {
+            let atleta = prompt("Digite o nome do atleta:");
+            if (atleta) atletas.push(atleta);
+        }
+
+        // Função para mostrar os atletas na página
+        function mostrarAtletas() {
+            const atletasDiv = document.getElementById("atletasExibidos");
+            if (atletas.length > 0) {
+                atletasDiv.innerHTML = "<strong>Atletas:</strong><br>" + atletas.join(", ");
+            } else {
+                atletasDiv.innerHTML = "Nenhum atleta cadastrado.";
+            }
+        }
+
+        // Função para limpar os atletas
+        function limparAtletas() {
+            atletas = [];
+            document.getElementById("atletasExibidos").innerHTML = "Atletas limpos.";
+        }
+
+        // Exibe os produtos na página
+        produtos.forEach((produto, index) => {
+            document.getElementById("produtos").innerHTML += `
+                <div>
+                    ${produto.nome} - R$ ${produto.preco}
+                    <button onclick="adicionarProduto(${index})">Adicionar</button>
+                </div>
+            `;
+        });
+
+        // Adicionar produto ao carrinho
+        function adicionarProduto(index) {
+            carrinho.push(produtos[index]);
+            alert(`Produto ${produtos[index].nome} adicionado ao carrinho.`);
+            mostrarCarrinho();
+        }
+
+        // Mostrar carrinho e valor total
+        function mostrarCarrinho() {
+            const carrinhoDiv = document.getElementById("carrinho");
+            if (carrinho.length > 0) {
+                let total = carrinho.reduce((acc, produto) => acc + produto.preco, 0);
+                carrinhoDiv.innerHTML = `<strong>Carrinho:</strong><br>` + carrinho.map(item => `${item.nome} - R$ ${item.preco}`).join("<br>");
+                carrinhoDiv.innerHTML += `<br><strong>Total: R$ ${total.toFixed(2)}</strong>`;
+            } else {
+                carrinhoDiv.innerHTML = "Carrinho vazio.";
+            }
+        }
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,77 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #ffffff;
+    margin: 0;
+    padding: 20px;
+}
+
+h2 {
+    text-align: center;
+    color: #333;
+}
+
+h3 {
+    color: #000000;
+    margin-bottom: 10px;
+}
+
+/* Botões para interagir */
+button {
+    background-color: #c9cdca;
+    color: rgb(8, 8, 8);
+    border: none;
+    padding: 10px 20px;
+    margin: 5px 0;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+
+/* Cor do botão muda quando o usuário passa o mouse */
+button:hover {
+    background-color: #c9cdca;
+}
+
+#tecnicasExibidas,
+#atletasExibidos,
+#produtos,
+#carrinho {
+    padding: 10px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    margin-top: 15px;
+}
+
+#produtos div {
+    background-color: #fff;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#produtos div span {
+    font-weight: bold;
+    color: #333;
+}
+
+/* Botões de adicionar produtos ao carrinho */
+#produtos button {
+    background-color: #0de62a;
+    padding: 8px 16px;
+    border-radius: 5px;
+    font-size: 14px;
+    border: none;
+    cursor: pointer;
+}
+
+/* Cor do botão muda quando o usuário passa o mouse */
+#produtos button:hover {
+    background-color: #0de62a;
+    ;
+}
